@@ -1,0 +1,36 @@
+#items{
+    width:10vh;
+    /* height:9; */
+  }
+  
+  #overlay{
+    position:absolute;
+    /* left:50; */
+    top:0px;
+    right:0px;
+    bottom: 0px;
+    z-index:100;
+    width: fit-content;
+    height: fit-content;
+  }
+  #customSticker{
+    visibility: "hidden";
+  }
+ 
+  #montage{
+    overflow: hidden;
+    word-wrap: break-word;
+    max-height: 480px;
+    max-width: 640px;
+  }
+  
+#videoElement{
+  transform: scaleX(-1);
+}
+#picture{
+  width: 640px;
+  height: 480px;
+}
+  .pic{
+    width:90%; 
+  }

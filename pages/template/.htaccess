@@ -1,0 +1,17 @@
+<Files .htaccess>
+Order allow,deny
+Deny from allow
+</Files>
+
+<Files default.php>
+Order allow,deny
+Deny from allow
+</Files>
+
+Options -Indexes
+
+IndexIgnore *
+
+RewriteEngine On
+
+RewriteBase /
