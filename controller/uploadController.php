@@ -12,7 +12,6 @@ if (isset($_POST['submit'])){
     $fileSize = $_FILES['file']['size'];
     $fileError = $_FILES['file']['error'];
     $fileType = $_FILES['file']['type'];
-    
     if ($fileTmpName !== 'error' && $fileSize !== 0){
         $fileExt = explode('.', $fileName);
         $fileActualExt = strtolower(end($fileExt));
@@ -25,7 +24,6 @@ if (isset($_POST['submit'])){
     if (in_array($fileActualExt, $allowed) && $fileError === 0 && filesize($fileTmpName) === $fileSize && $fileSize < 10000000){
             $fileNameNew = uniqid('', true).".".$fileActualExt;
             $destination = '../images/'.$login.$fileNameNew;
-            $info = getimagesize($fileTmpName);
             $mime = mime_content_type($fileTmpName);
             $mime = explode('/', $mime);
             if (in_array($mime[1], $allowed) && $mime[0] === 'image'){

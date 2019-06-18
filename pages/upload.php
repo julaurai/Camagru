@@ -1,8 +1,4 @@
 <?php
-// if (!(isset($_SESSION['login']))){
-//   header("Location: index.php");
-//   exit();
-// }
 if (isset($_GET['uploaded'])){
     if ($_GET['uploaded'] === 'wrong'){
 ?>

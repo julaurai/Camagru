@@ -11,8 +11,13 @@ if (isset($_GET['p'])){
         $title = 'Webcam';
         require_once 'pages/webcam.php';
     } else if ($p === 'upload'){ 
-        $title = 'Webcam';
-        require_once 'pages/upload.php';
+        if (isset($_SESSION['login'])){
+            $title = 'Webcam';
+            require_once 'pages/upload.php';
+        } else {
+            $title = 'Gallery';
+            header("Location: index.php");
+        }
     }else if ($p === 'posts'){
         $title = 'Posts';
         if (isset($_GET['postID'])){
@@ -35,18 +40,33 @@ if (isset($_GET['p'])){
         require_once 'pages/signin.php';
         $title = 'Signin';
     } else if ($p === 'forgottenPassword'){
-        require_once 'pages/forgottenPassword.php';
-        $title = 'ForgottenPassword';
+        if (isset($_SESSION['login'])){
+            $title = 'Gallery';
+            header("Location: index.php");
+        } else {
+            $title = 'ForgottenPassword';
+            require_once 'pages/forgottenPassword.php';
+        }
     } else {
         $title = 'Gallery';
         header("Location: index.php");
     }
 } else if (isset($_GET['log']) && isset($_GET['key'])){
-    require_once 'controller/mailconfirmationController.php';
-    $title = "Signup";
+    if (isset($_SESSION['login'])){
+        $title = 'Gallery';
+        header("Location: index.php");
+    } else {
+        $title = "Signup";
+        require_once 'controller/mailconfirmationController.php';
+    }
 } else if (isset($_GET['mail']) && (isset($_GET['key']))){
-    require_once 'controller/password_recoveryController.php';
-    $title = 'ForgottenPassword';
+    if (isset($_SESSION['login'])){
+        $title = 'Gallery';
+        header("Location: index.php");
+    } else {
+        $title = 'ForgottenPassword';
+        require_once 'controller/password_recoveryController.php';
+    }
 } else {
     $title = 'Gallery';
     require_once 'pages/main.php';
